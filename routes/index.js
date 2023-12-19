@@ -33,7 +33,8 @@ try {
   });
 
   router.get('/weather', (req, res, next) => {
-    res.json({ req: req.body });
+    console.log('Real IP------->', req.socket.remoteAddress);
+    res.json({ req: req.body, message:'Weather API' });
   });
 
   router.post('/new', (req, res, next) => {
