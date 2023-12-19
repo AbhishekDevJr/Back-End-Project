@@ -27,7 +27,13 @@ try {
   });
 
   router.get('/new', (req, res, next) => {
-    res.render('form', { title: 'User Form' });
+    const ipAddress = req.ip;
+    console.log('ipAddress', ipAddress, req.socket.remoteAddress);
+    res.render('form', { title: 'User Form', ipAddress: ipAddress });
+  });
+
+  router.get('/weather', (req, res, next) => {
+    res.json({ req: req.body });
   });
 
   router.post('/new', (req, res, next) => {
