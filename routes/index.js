@@ -34,7 +34,7 @@ try {
 
   router.get('/weather', (req, res, next) => {
     console.log('Real IP------->', req.socket.remoteAddress);
-    res.json({ req: req.body, message: 'Weather API', realIP: req.socket.remoteAddress });
+    res.json({ req: req.body, message: 'Weather API', realIP: req.headers['x-forwarded-for'] || req.socket.remoteAddress });
   });
 
   router.post('/new', (req, res, next) => {
